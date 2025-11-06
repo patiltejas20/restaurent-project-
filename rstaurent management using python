@@ -1,0 +1,51 @@
+menu = {
+    "Pizza": 50,
+    "Maggi": 30,
+    "Pohe": 25,
+    "Dosa": 40,
+    "Coffee": 70,
+    "Burger": 60,
+    "Vada Pav": 20,
+    "Paneer Tikka": 100,
+    "Malai Kofta": 120,
+    "Dal Tadka": 80,
+    "Kaju Kari": 100,
+    "Mix Veg": 120
+}
+
+Total_Order = 0
+ordered_items = []
+
+print("🍽️ Welcome to Our Python Restaurant!")
+print("\nHere's our Menu:")
+
+for item, price in menu.items():
+    print(f"{item}: Rs{price}")
+
+while True:
+    item = input("\nEnter the name of the item you want to order: ").title()
+
+    if item in menu:
+        Total_Order += menu[item]
+        ordered_items.append(item)
+        print(f"✅ '{item}' has been added to your order.")
+    else:
+        print(f"❌ Sorry, '{item}' is not available on the menu.")
+
+    another_order = input("\nDo you want to add another item? (Yes/No): ").lower()
+
+    if another_order == "yes":
+        print("\n📜 Here's our Menu again:")
+        for item, price in menu.items():
+            print(f"{item}: Rs{price}")
+        print(f"\n💰 Current total so far: Rs{Total_Order}")
+    else:
+        break
+
+# Display final summary
+print("\n🧾 Final Order Summary:")
+for i, item in enumerate(ordered_items, 1):
+    print(f"{i}. {item} - Rs{menu[item]}")
+
+print(f"\n💵 Total amount to pay: Rs{Total_Order}")
+print("🙏 Thank you for ordering from Python Restaurant!")
